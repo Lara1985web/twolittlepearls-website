@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Little Pearls - Collections</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f6f3;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            background-color: #f8f6f3;
+            padding: 10px 0;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .top-bar {
+            background-color: rgba(0,0,0,0.05);
+            padding: 8px 0;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: flex-start;
+            gap: 15px;
+            padding: 0 20px;
+            margin-bottom: 10px;
+        }
+
+        .social-links a {
+            color: #888;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 25px;
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            width: 300px;
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            flex: 1;
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        .logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .logo img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+        }
+
+        .account-cart {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .account-cart a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+        }
+
+        /* Navigation Menu */
+        .main-nav {
+            background-color: #f8f6f3;
+            padding: 15px 0;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .nav-menu {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #666;
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 8px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #e76f51;
+        }
+
+        /* Sub Navigation */
+        .sub-nav {
+            background-color: rgba(0,0,0,0.02);
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .sub-nav-links {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+        }
+
+        .sub-nav-links a {
+            text-decoration: none;
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .collections-title {
+            text-align: center;
+            font-size: 32px;
+            color: #666;
+            margin-bottom: 60px;
+            font-weight: 300;
+        }
+
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .collection-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .collection-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .collection-image {
+            height: 250px;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #999;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .collection-image.sunday {
+            background: linear-gradient(135deg, #fff, #f8f8f8);
+            font-family: 'Courier New', monospace;
+            font-size: 24px;
+            color: #666;
+        }
+
+        .collection-image.heart {
+            background: linear-gradient(135deg, #000, #333);
+            color: white;
+            font-weight: bold;
+            font-size: 36px;
+        }
+
+        .collection-image.accessories {
+            background: linear-gradient(135deg, #ffeef0, #fff0f5);
+        }
+
+        .collection-image.books {
+            background: linear-gradient(135deg, #00bcd4, #0097a7);
+        }
+
+        .collection-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .collection-name {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .collection-count {
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .logo {
+                position: static;
+                transform: none;
+            }
+
+            .search-box {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .nav-menu {
+                gap: 20px;
+            }
+
+            .sub-nav-links {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .collections-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        /* Interactive Elements */
+        .search-icon, .cart-icon {
+            cursor: pointer;
+        }
+
+        .notification-badge {
+            background: #e76f51;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 11px;
+            margin-left: 5px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .collection-card {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .collection-card:nth-child(1) { animation-delay: 0.1s; }
+        .collection-card:nth-child(2) { animation-delay: 0.2s; }
+        .collection-card:nth-child(3) { animation-delay: 0.3s; }
+        .collection-card:nth-child(4) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 0 20px;">
+            <div class="social-links">
+                <a href="#">📘</a>
+                <a href="#">📺</a>
+                <a href="#">📷</a>
+                <a href="#">📌</a>
+            </div>
+            <div style="display: flex; gap: 30px; font-size: 12px;">
+                <span>⭐ Wishlist</span>
+                <span>👑 Loyalty Club</span>
+                <span>🎁 Gift Registry</span>
+                <span>New Zealand (NZD $) ▼</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Search">
+            </div>
+            
+            <div class="logo">
+                <img src="logo.png" alt="Two Little Pearls Logo">
+            </div>
+            
+            <div class="account-cart">
+                <a href="#">Account</a>
+                <a href="#">Cart <span class="cart-icon">🛍️</span></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <div class="nav-menu">
+            <a href="#">NEW & TRENDING</a>
+            <a href="#">WINTER</a>
+            <a href="#">PLAY</a>
+            <a href="#">HOME + DECOR</a>
+            <a href="#">BABY</a>
+            <a href="#">BOOKS</a>
+            <a href="#">ACCESSORIES</a>
+            <a href="#">EAT + DRINK</a>
+            <a href="#">BATH + WELLBEING</a>
+            <a href="#">PARTY</a>
+            <a href="#">GROWN-UPS</a>
+            <a href="#">THEMES</a>
+            <a href="#">GIFTS</a>
+            <a href="#">OUTLET</a>
+            <a href="#">BRANDS</a>
+            <a href="#">ALL</a>
+        </div>
+    </nav>
+
+    <!-- Sub Navigation -->
+    <div class="sub-nav">
+        <div class="sub-nav-links">
+            <a href="#">Shop by Brand</a>
+            <a href="#">Best Sellers</a>
+            <a href="#">Gift Certificates</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1 class="collections-title">Our collections</h1>
+        
+        <div class="collections-grid">
+            <div class="collection-card" onclick="openCollection('sunday')">
+                <div class="collection-image sunday">
+                    <div style="border: 2px dashed #ccc; width: 120px; height: 120px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        &<br>SUNDAY
+                    </div>
+                </div>
+                <div class="collection-info">
+                    <div class="collection-name">&SUNDAY</div>
+                    <div class="collection-count">2 products</div>
+                </div>
+            </div>
+
+            <div class="collection-card" onclick="openCollection('heart')">
+                <div class="collection-image heart">
+                    <div>
+                        100<br>
+                        PERCENT<br>
+                        HEART
+                    </div>
+                </div>
+                <div class="collection-info">
+                    <div class="collection-name">100 Percent Heart</div>
+                    <div class="collection-count">61 products</div>
+                </div>
+            </div>
+
+            <div class="collection-card" onclick="openCollection('accessories')">
+                <div class="collection-image accessories">
+                    <div style="width: 100px; height: 80px; background: rgba(255,192,203,0.5); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 24px;">
+                        👜
+                    </div>
+                </div>
+                <div class="collection-info">
+                    <div class="collection-name">ACCESSORIES</div>
+                    <div class="collection-count">1121 products</div>
+                </div>
+            </div>
+
+            <div class="collection-card" onclick="openCollection('books')">
+                <div class="collection-image books">
+                    <div style="background: white; padding: 20px; border-radius: 10px; color: #00bcd4; font-weight: bold; font-size: 16px; text-align: center;">
+                        HOW TO DRAW<br>
+                        📚📖📝
+                    </div>
+                </div>
+                <div class="collection-info">
+                    <div class="collection-name">ACTIVITY BOOKS</div>
+                    <div class="collection-count">162 products</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function openCollection(collection) {
+            alert(`Opening ${collection} collection! In a real site, this would navigate to the collection page.`);
+        }
+
+        // Add search functionality
+        document.querySelector('.search-box input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                alert(`Searching for: ${this.value}`);
+            }
+        });
+
+        // Add cart functionality
+        document.querySelector('.cart-icon').addEventListener('click', function() {
+            alert('Opening cart! In a real site, this would show the shopping cart.');
+        });
+
+        // Add smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add loading animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '1';
+        });
+    </script>
+</body>
+</html>
