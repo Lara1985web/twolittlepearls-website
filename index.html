@@ -127,6 +127,53 @@
             color: #e76f51;
         }
 
+        /* Dropdown Styles */
+        .nav-item {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            padding: 15px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid #e5e5e5;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 8px 20px;
+            color: #666;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: normal;
+            text-transform: none;
+            letter-spacing: normal;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown a:hover {
+            background: #f8f6f3;
+            color: #e76f51;
+            padding-left: 25px;
+        }
+
         /* Sub Navigation */
         .sub-nav {
             background-color: rgba(0,0,0,0.02);
@@ -339,18 +386,156 @@
     <!-- Main Navigation -->
     <nav class="main-nav">
         <div class="nav-menu">
-            <a href="#">NEW & TRENDING</a>
-            <a href="#">PLAY</a>
-            <a href="#">HOME + DECOR</a>
-            <a href="#">BABY</a>
-            <a href="#">ACCESSORIES</a>
-            <a href="#">BATH + WELLBEING</a>
-            <a href="#">PARTY</a>
-            <a href="#">GROWN-UPS</a>
-            <a href="#">THEMES</a>
-            <a href="#">GIFTS</a>
-            <a href="#">OUTLET</a>
-            <a href="#">BRANDS</a>
+            <div class="nav-item">
+                <a href="#">NEW & TRENDING</a>
+                <div class="dropdown">
+                    <a href="#">New Arrivals</a>
+                    <a href="#">Bestsellers</a>
+                    <a href="#">Limited Edition</a>
+                    <a href="#">Featured Products</a>
+                    <a href="#">Staff Picks</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#">WINTER</a>
+                <div class="dropdown">
+                    <a href="#">Winter Coats</a>
+                    <a href="#">Warm Accessories</a>
+                    <a href="#">Snow Boots</a>
+                    <a href="#">Thermal Wear</a>
+                    <a href="#">Winter Toys</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#">PLAY</a>
+                <div class="dropdown">
+                    <a href="#">Educational Toys</a>
+                    <a href="#">Outdoor Play</a>
+                    <a href="#">Arts & Crafts</a>
+                    <a href="#">Building Blocks</a>
+                    <a href="#">Musical Instruments</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#">HOME + DECOR</a>
+                <div class="dropdown">
+                    <a href="#">Nursery Decor</a>
+                    <a href="#">Wall Art</a>
+                    <a href="#">Night Lights</a>
+                    <a href="#">Storage Solutions</a>
+                    <a href="#">Furniture</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#">BABY</a>
+                <div class="dropdown">
+                    <a href="#">Newborn Essentials</a>
+                    <a href="#">Baby Clothing</a>
+                    <a href="#">Feeding & Nursing</a>
+                    <a href="#">Baby Toys</a>
+                    <a href="#">Swaddles & Blankets</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#">BOOKS</a>
+                <div class="dropdown">
+                    <a href="#">Picture Books</a>
+                    <a href="#">Early Readers</a>
+                    <a href="#">Activity Books</a>
+                    <a href="#">Educational Books</a>
+                    <a href="#">Board Books</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#">ACCESSORIES</a>
+                <div class="dropdown">
+                    <a href="#">Hair Accessories</a>
+                    <a href="#">Jewelry</a>
+                    <a href="#">Bags & Backpacks</a>
+                    <a href="#">Hats & Caps</a>
+                    <a href="#">Sunglasses</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#">EAT + DRINK</a>
+                <div class="dropdown">
+                    <a href="#">Lunch Boxes</a>
+                    <a href="#">Water Bottles</a>
+                    <a href="#">Plates & Bowls</a>
+                    <a href="#">Utensils</a>
+                    <a href="#">Bibs & Placemats</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#">BATH + WELLBEING</a>
+                <div class="dropdown">
+                    <a href="#">Bath Toys</a>
+                    <a href="#">Skincare</a>
+                    <a href="#">Towels & Robes</a>
+                    <a href="#">Toiletries</a>
+                    <a href="#">Safety Products</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#">PARTY</a>
+                <div class="dropdown">
+                    <a href="#">Party Decorations</a>
+                    <a href="#">Party Favors</a>
+                    <a href="#">Balloons</a>
+                    <a href="#">Cake Supplies</a>
+                    <a href="#">Themed Parties</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#">GROWN-UPS</a>
+                <div class="dropdown">
+                    <a href="#">Maternity Wear</a>
+                    <a href="#">Parent Accessories</a>
+                    <a href="#">Coffee & Tea</a>
+                    <a href="#">Self Care</a>
+                    <a href="#">Keepsakes</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#">THEMES</a>
+                <div class="dropdown">
+                    <a href="#">Princess Theme</a>
+                    <a href="#">Dinosaur Theme</a>
+                    <a href="#">Space Theme</a>
+                    <a href="#">Animal Theme</a>
+                    <a href="#">Ocean Theme</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#">GIFTS</a>
+                <div class="dropdown">
+                    <a href="#">Gift Sets</a>
+                    <a href="#">Birthday Gifts</a>
+                    <a href="#">Baby Shower Gifts</a>
+                    <a href="#">Holiday Gifts</a>
+                    <a href="#">Gift Cards</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#">OUTLET</a>
+                <div class="dropdown">
+                    <a href="#">Sale Items</a>
+                    <a href="#">Clearance</a>
+                    <a href="#">End of Season</a>
+                    <a href="#">Discontinued</a>
+                    <a href="#">Damaged Packaging</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#">BRANDS</a>
+                <div class="dropdown">
+                    <a href="#">Local NZ Brands</a>
+                    <a href="#">International Brands</a>
+                    <a href="#">Eco-Friendly Brands</a>
+                    <a href="#">Premium Brands</a>
+                    <a href="#">All Brands A-Z</a>
+                </div>
+            </div>
             <a href="#">ALL</a>
         </div>
     </nav>
@@ -377,7 +562,7 @@
                 </div>
                 <div class="collection-info">
                     <div class="collection-name">&SUNDAY</div>
-                    <div class="collection-count">0 products</div>
+                    <div class="collection-count">2 products</div>
                 </div>
             </div>
 
@@ -391,7 +576,7 @@
                 </div>
                 <div class="collection-info">
                     <div class="collection-name">100 Percent Heart</div>
-                    <div class="collection-count">0 products</div>
+                    <div class="collection-count">61 products</div>
                 </div>
             </div>
 
@@ -403,7 +588,7 @@
                 </div>
                 <div class="collection-info">
                     <div class="collection-name">ACCESSORIES</div>
-                    <div class="collection-count">0 products</div>
+                    <div class="collection-count">1121 products</div>
                 </div>
             </div>
 
@@ -416,7 +601,7 @@
                 </div>
                 <div class="collection-info">
                     <div class="collection-name">ACTIVITY BOOKS</div>
-                    <div class="collection-count">0 products</div>
+                    <div class="collection-count">162 products</div>
                 </div>
             </div>
         </div>
@@ -458,5 +643,4 @@
         });
     </script>
 </body>
-
 </html>
