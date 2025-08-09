@@ -900,9 +900,17 @@
             const message = chatInput.value.trim();
             
             if (message) {
-                // In a real implementation, you'd send this to your chat service
-                alert(`Message sent: "${message}"\n\nIn a real store, this would go to customer service!`);
+                // Option 1: Send to WhatsApp
+                const whatsappMessage = encodeURIComponent(`Message from website: ${message}`);
+                const whatsappURL = `https://wa.me/64211111836?text=${whatsappMessage}`;
+                window.open(whatsappURL, '_blank');
+                
+                // Clear input and close chat
                 chatInput.value = '';
+                toggleChat();
+                
+                // Optional: Also show confirmation
+                // alert(`Message sent to WhatsApp: "${message}"`);
             }
         }
 
