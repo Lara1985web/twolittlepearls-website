@@ -846,6 +846,9 @@
                     <button class="quick-option" onclick="handleQuickOption('shipping')">Shipping details</button>
                     <button class="quick-option" onclick="handleQuickOption('return')">Return policy</button>
                     <button class="quick-option" onclick="handleQuickOption('loyalty')">See/Redeem Loyalty Points</button>
+                    <button class="quick-option" onclick="openWhatsApp()" style="background: #25D366; color: white; border-color: #25D366;">
+                        💬 Chat on WhatsApp
+                    </button>
                 </div>
             </div>
         </div>
@@ -922,6 +925,15 @@
             }
             
             alert(response + '\n\nIn a real store, this would show detailed information or connect you with customer service!');
+        }
+
+        function openWhatsApp() {
+            const message = encodeURIComponent("Hi Two Little Pearls! I'd like to know more about your products.");
+            const whatsappURL = `https://wa.me/64211111836?text=${message}`;
+            window.open(whatsappURL, '_blank');
+            
+            // Close the chat widget after opening WhatsApp
+            toggleChat();
         }
 
         // Auto-resize chat input
