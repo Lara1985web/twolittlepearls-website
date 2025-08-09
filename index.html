@@ -357,6 +357,184 @@
         .collection-card:nth-child(2) { animation-delay: 0.2s; }
         .collection-card:nth-child(3) { animation-delay: 0.3s; }
         .collection-card:nth-child(4) { animation-delay: 0.4s; }
+
+        /* Chat Widget Styles */
+        .chat-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 10000;
+        }
+
+        .chat-button {
+            width: 60px;
+            height: 60px;
+            background: #b5967d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .chat-button:hover {
+            transform: scale(1.1);
+            background: #9d8269;
+        }
+
+        .chat-button svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
+        }
+
+        .chat-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            height: 450px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-window.open {
+            display: flex;
+        }
+
+        .chat-header {
+            background: #b5967d;
+            color: white;
+            padding: 20px;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .chat-header h3 {
+            margin: 0 0 8px 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .chat-header p {
+            margin: 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .chat-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-close:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .chat-content {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-input-area {
+            margin-bottom: 20px;
+        }
+
+        .chat-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-size: 14px;
+            outline: none;
+            resize: none;
+            min-height: 40px;
+            max-height: 100px;
+        }
+
+        .chat-input::placeholder {
+            color: #999;
+        }
+
+        .chat-send {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #b5967d;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .chat-send svg {
+            width: 16px;
+            height: 16px;
+            fill: white;
+        }
+
+        .quick-options {
+            flex: 1;
+        }
+
+        .quick-options h4 {
+            margin: 0 0 15px 0;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .quick-option {
+            display: block;
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            background: #f8f8f8;
+            border: 1px solid #e5e5e5;
+            border-radius: 25px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .quick-option:hover {
+            background: #b5967d;
+            color: white;
+            border-color: #b5967d;
+        }
+
+        @media (max-width: 768px) {
+            .chat-window {
+                width: 300px;
+                height: 400px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -637,6 +815,42 @@
         </div>
     </main>
 
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <button class="chat-button" onclick="toggleChat()">
+            <svg viewBox="0 0 24 24">
+                <path d="M20,2A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H6L2,22V4C2,2.89 2.9,2 4,2H20M4,4V18L6,16H20V4H4M6,7H18V9H6V7M6,11H15V13H6V11Z"/>
+            </svg>
+        </button>
+        
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <button class="chat-close" onclick="toggleChat()">×</button>
+                <h3>Chat with us</h3>
+                <p>👋 Hey! Thanks for shopping with us! Let me know if you need any help.</p>
+            </div>
+            
+            <div class="chat-content">
+                <div class="chat-input-area" style="position: relative;">
+                    <textarea class="chat-input" placeholder="Write message" rows="1"></textarea>
+                    <button class="chat-send" onclick="sendMessage()">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="quick-options">
+                    <h4>Instant answers</h4>
+                    <button class="quick-option" onclick="handleQuickOption('track')">Track my order</button>
+                    <button class="quick-option" onclick="handleQuickOption('shipping')">Shipping details</button>
+                    <button class="quick-option" onclick="handleQuickOption('return')">Return policy</button>
+                    <button class="quick-option" onclick="handleQuickOption('loyalty')">See/Redeem Loyalty Points</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         function openCollection(collection) {
             alert(`Opening ${collection} collection! In a real site, this would navigate to the collection page.`);
@@ -670,6 +884,63 @@
         // Add loading animation
         window.addEventListener('load', function() {
             document.body.style.opacity = '1';
+        });
+
+        // Chat Widget Functions
+        function toggleChat() {
+            const chatWindow = document.getElementById('chatWindow');
+            chatWindow.classList.toggle('open');
+        }
+
+        function sendMessage() {
+            const chatInput = document.querySelector('.chat-input');
+            const message = chatInput.value.trim();
+            
+            if (message) {
+                // In a real implementation, you'd send this to your chat service
+                alert(`Message sent: "${message}"\n\nIn a real store, this would go to customer service!`);
+                chatInput.value = '';
+            }
+        }
+
+        function handleQuickOption(option) {
+            let response = '';
+            
+            switch(option) {
+                case 'track':
+                    response = 'To track your order, please provide your order number. You can find this in your confirmation email.';
+                    break;
+                case 'shipping':
+                    response = 'We offer free shipping on orders over $200 NZD. Standard shipping takes 3-5 business days within New Zealand.';
+                    break;
+                case 'return':
+                    response = 'We accept returns within 14 days of purchase. Items must be in original condition with tags attached.';
+                    break;
+                case 'loyalty':
+                    response = 'Join our loyalty program to earn points with every purchase! Sign up for an account to start earning rewards.';
+                    break;
+            }
+            
+            alert(response + '\n\nIn a real store, this would show detailed information or connect you with customer service!');
+        }
+
+        // Auto-resize chat input
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatInput = document.querySelector('.chat-input');
+            if (chatInput) {
+                chatInput.addEventListener('input', function() {
+                    this.style.height = 'auto';
+                    this.style.height = Math.min(this.scrollHeight, 100) + 'px';
+                });
+                
+                // Send message on Enter
+                chatInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        sendMessage();
+                    }
+                });
+            }
         });
     </script>
 </body>
