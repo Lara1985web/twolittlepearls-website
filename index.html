@@ -420,13 +420,82 @@
             display: flex;
         }
 
-        /* Mobile Chat Widget - Fixed Positioning */
+        /* Mobile Chat Widget - Proper Overlay */
         @media (max-width: 768px) {
             .chat-widget {
                 position: fixed;
+                bottom: 20px;
+                right: 20px;
+                z-index: 10001;
+            }
+
+            .chat-button {
+                width: 55px;
+                height: 55px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            }
+
+            .chat-button svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            .chat-window {
+                position: fixed;
+                bottom: 85px;
+                right: 20px;
+                left: 20px;
+                width: auto;
+                max-width: none;
+                height: 60vh;
+                max-height: 450px;
+                min-height: 300px;
+                border-radius: 15px;
+                box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+                z-index: 10002;
+            }
+
+            .chat-content {
+                flex: 1;
+                padding: 15px;
+                display: flex;
+                flex-direction: column;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .chat-input-area {
+                margin-bottom: 12px;
+                flex-shrink: 0;
+            }
+
+            .quick-options {
+                flex: 1;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+                min-height: 0;
+            }
+
+            .quick-options h4 {
+                margin: 0 0 8px 0;
+                font-size: 13px;
+                flex-shrink: 0;
+            }
+
+            .contact-buttons {
+                flex-shrink: 0;
+                margin-top: 8px;
+            }
+
+            .whatsapp-help {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .chat-widget {
                 bottom: 15px;
                 right: 15px;
-                z-index: 10000;
             }
 
             .chat-button {
@@ -440,38 +509,23 @@
             }
 
             .chat-window {
-                position: fixed;
                 bottom: 75px;
                 right: 15px;
                 left: 15px;
-                width: auto;
-                max-width: none;
-                height: 260px;
-                border-radius: 15px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .chat-widget {
-                bottom: 12px;
-                right: 12px;
+                height: 65vh;
+                max-height: 400px;
             }
 
-            .chat-button {
-                width: 45px;
-                height: 45px;
+            .chat-header {
+                padding: 15px;
             }
 
-            .chat-button svg {
-                width: 20px;
-                height: 20px;
+            .chat-header h3 {
+                font-size: 16px;
             }
 
-            .chat-window {
-                bottom: 65px;
-                right: 12px;
-                left: 12px;
-                height: 240px;
+            .chat-header p {
+                font-size: 13px;
             }
         }
 
